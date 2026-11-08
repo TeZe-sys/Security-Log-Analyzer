@@ -102,4 +102,4 @@ GitHub: https://github.com/TeZe-sys
 
 ---
 
-*This project is created for educational purposes and practical cybersecurity learning.*
+*This project is created for educational purposes and practical cybersecurity learning.*s
