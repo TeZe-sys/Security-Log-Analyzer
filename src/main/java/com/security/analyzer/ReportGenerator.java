@@ -37,6 +37,10 @@ public class ReportGenerator {
             }
         }
 
+        boolean emptyFile =
+                events.isEmpty()
+                && readResult.getInvalidLineCount() == 0;
+
         StringBuilder report = new StringBuilder();
 
         report.append("====================================\n");
@@ -59,16 +63,24 @@ public class ReportGenerator {
               .append(failedLogins).append("\n");
 
         report.append("Logouts: ")
-              .append(logouts).append("\n\n");
+              .append(logouts).append("\n");
+
+        if (emptyFile) {
+            report.append("\nWARNING: Input log file is empty.\n");
+        }
 
         // Log validation summary
-        report.append("========== LOG VALIDATION ==========\n");
+        report.append("\n========== LOG VALIDATION ==========\n");
 
         report.append("Invalid log lines: ")
               .append(readResult.getInvalidLineCount())
               .append("\n");
 
-        if (readResult.getInvalidLines().isEmpty()) {
+        if (emptyFile) {
+
+            report.append("No log entries found.\n");
+
+        } else if (readResult.getInvalidLines().isEmpty()) {
 
             report.append("All log entries are valid.\n");
 
@@ -82,7 +94,11 @@ public class ReportGenerator {
         // Security alerts
         report.append("\n========== SECURITY ALERTS ==========\n");
 
-        if (alerts.isEmpty()) {
+        if (emptyFile) {
+
+            report.append("No events available to analyze.\n");
+
+        } else if (alerts.isEmpty()) {
 
             report.append("No suspicious activity detected.\n");
 
