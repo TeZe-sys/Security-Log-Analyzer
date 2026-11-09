@@ -1,105 +1,80 @@
+
 # Security Log Analyzer
 
-A beginner-friendly Java cybersecurity project focused on understanding system logs, operating-system-specific log analysis, and security monitoring.
+A Java-based cybersecurity project that analyzes authentication logs, identifies suspicious login activity, validates log entries, and generates security reports.
 
-## About the Project
+## Features
 
-Security Log Analyzer is a Java Maven project being developed to explore how security-related events can be analyzed in Windows and Linux environments.
-
-The goal is to build a tool that can help identify suspicious activities from system logs.
-
-## Objectives
-
-- Understand system logs and their importance in cybersecurity.
-- Practice Java object-oriented programming.
-- Learn interfaces and polymorphism.
-- Explore Windows and Linux log analysis.
-- Develop practical cybersecurity skills.
+- Reads authentication log files.
+- Validates log timestamps and event types.
+- Identifies invalid log entries.
+- Detects possible brute-force login attacks.
+- Detects successful logins after repeated failed attempts.
+- Generates security analysis reports.
+- Includes automated unit tests using JUnit.
 
 ## Technologies Used
 
-| Technology | Purpose |
-|---|---|
-| Java | Main programming language |
-| Apache Maven | Project and dependency management |
-| JUnit | Unit testing |
-| Git | Version control |
-| GitHub | Project hosting and documentation |
+- Java 17+
+- Maven
+- JUnit 4
+- VS Code
+- Git and GitHub
 
 ## Project Structure
 
 ```text
 security-log-analyzer/
 ├── src/
-│   ├── main/
-│   │   └── java/
-│   └── test/
-│       └── java/
+│   ├── main/java/com/security/analyzer/
+│   └── test/java/com/security/analyzer/
+├── logs/
+│   └── sample.log
+├── reports/
 ├── pom.xml
-├── .gitignore
 └── README.md
 ```
 
-## Prerequisites
-
-- Java JDK
-- Apache Maven
-- Git
-
 ## How to Run
 
-Clone the repository:
+### 1. Clone the repository
 
 ```bash
-git clone https://github.com/TeZe-sys/Security-Log-Analyzer.git
+git clone YOUR_GITHUB_REPOSITORY_URL
 ```
 
-Navigate to the project:
+### 2. Open the project directory
 
 ```bash
-cd Security-Log-Analyzer
+cd security-log-analyzer
 ```
 
-Build the project:
-
-```bash
-mvn clean package
-```
-
-Run tests:
+### 3. Run tests
 
 ```bash
 mvn clean test
 ```
 
-## Current Development Status
+### 4. Run the application
 
-This project is under development. The initial Maven project structure and Java analyzer interface implementation are being developed.
+```bash
+mvn compile
+mvn exec:java -Dexec.mainClass="com.security.analyzer.App"
+```
 
-## Planned Features
+Note: The Maven Exec plugin may need to be added to `pom.xml` before using the last command. Alternatively, run the compiled application using your IDE.
 
-- Read Windows and Linux log files.
-- Detect repeated failed login attempts.
-- Identify suspicious log activities.
-- Generate security analysis reports.
-- Add automated tests for detection rules.
+## Detection Rules
 
-## Learning Outcomes
+- Three failed login attempts within five minutes trigger a possible brute-force alert.
+- A successful login after three or more recent failed attempts triggers an additional alert.
 
-- Java OOP concepts
-- Interfaces and polymorphism
-- Maven project management
-- JUnit testing
-- Cybersecurity log analysis fundamentals
+## Current Limitations
 
-## Author
+- Uses a predefined sample log format.
+- Does not yet parse native Windows Event Logs or Linux authentication logs.
+- Detection rules are basic and intended for learning and demonstration.
 
-**TeZe-sys**
+## Disclaimer
 
-BTech Student | Cybersecurity Enthusiast
-
-GitHub: https://github.com/TeZe-sys
-
----
-
-*This project is created for educational purposes and practical cybersecurity learning.*s
+This project is for educational purposes. It uses sample log data and is not a replacement for a production security monitoring system.

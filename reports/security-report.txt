@@ -1,0 +1,24 @@
+====================================
+       SECURITY ANALYSIS REPORT     
+====================================
+
+Generated at: 2026-11-09T13:47:16.910782900
+
+========== EVENT SUMMARY ==========
+Total valid events: 7
+Successful logins: 2
+Failed logins: 4
+Logouts: 1
+
+========== LOG VALIDATION ==========
+Invalid log lines: 1
+Invalid line numbers: [8]
+
+========== SECURITY ALERTS ==========
+WARNING: Possible brute-force login attack
+Username: guest
+Failed attempts: 3
+Detected at: 2026-11-08T10:03
+------------------------------------
+
+========== END OF REPORT ==========
